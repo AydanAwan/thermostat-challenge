@@ -1,37 +1,34 @@
-export class thermostat {
+export class Thermostat {
     constructor(){
         this.temperature = 20;
         this.maxTemp = 25;
+        this.isPowerSaving = true;
     }
 
     decrease(){
         if(this.temperature > 10){
-            return this.temperature --;
-        } else {
-            return 'Minimum temperature has been reached';
+            this.temperature --;
         }
+        return this.temperature;
     }
 
     increase(){
         if(this.temperature < this.maxTemp){
-            return this.temperature ++;
-        } else {
-            return 'Maximum temperature has been reached';
-        }
+            this.temperature ++;
+        } 
+        return this.temperature
     }
 
-    get temp(){
-        return this.temperature;
-    }
-
-    powerSavingMode(turnedOn){
-        if(turnedOn === true){
-            return this.maxTemp = 25;
-        } else if (turnedOn === false){
-            return this.maxTemp = 32;
-        } else {
-            return 'Invalid input';
-        }
+    powerSavingMode(){
+        if(this.isPowerSaving === true){
+            this.maxTemp = 32;
+            this.isPowerSaving = false;
+        } else if (this.isPowerSaving === false){
+            if(this.maxTemp > 25){
+                this.maxTemp = 25;
+                this.isPowerSaving = true;
+            }
+        } 
     }
 
     reset(){
@@ -46,9 +43,5 @@ export class thermostat {
             case (this.temperature>25):
                 return 'high usage'   
         }
-
-
     }
-
-    
 }
