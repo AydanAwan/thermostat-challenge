@@ -10,5 +10,11 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^7.0.0"
+  },
+  "dependencies": {
+    "http": "0.0.1-security",
+    "http-server": "^0.12.3",
+    "install": "^0.13.0",
+    "npm": "^7.8.0"
   }
 }

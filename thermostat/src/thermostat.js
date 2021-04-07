@@ -5,16 +5,16 @@ export class thermostat {
     }
 
     decrease(){
-        if(this.temperature >= 10){
-            this.temperature -= 1;
+        if(this.temperature > 10){
+            return this.temperature --;
         } else {
             return 'Minimum temperature has been reached';
         }
     }
 
     increase(){
-        if(this.temperature <= this.maxTemp){
-            this.temperature += 1;
+        if(this.temperature < this.maxTemp){
+            return this.temperature ++;
         } else {
             return 'Maximum temperature has been reached';
         }
@@ -26,16 +26,29 @@ export class thermostat {
 
     powerSavingMode(turnedOn){
         if(turnedOn === true){
-            this.maxTemp = 25;
+            return this.maxTemp = 25;
         } else if (turnedOn === false){
-            this.maxTemp = 32;
+            return this.maxTemp = 32;
         } else {
             return 'Invalid input';
         }
     }
 
     reset(){
-        this.temperature = 20;
+        return this.temperature = 20;
     }
+    colour(){
+        switch(true){
+            case (this.temperature<18):
+                return 'low usage'
+            case (this.temperature>=18 && this.temperature<= 25):
+                return 'medium usage'
+            case (this.temperature>25):
+                return 'high usage'   
+        }
+
+
+    }
+
     
 }
