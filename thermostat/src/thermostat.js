@@ -11,4 +11,5 @@ export class thermostat{
     get temp(){
         return this.temperature
     }
+    
 }
