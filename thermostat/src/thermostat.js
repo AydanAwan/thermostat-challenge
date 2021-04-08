@@ -23,17 +23,20 @@ export class Thermostat {
         if(this.isPowerSaving === true){
             this.maxTemp = 32;
             this.isPowerSaving = false;
+            return this.temperature;
         } else if (this.isPowerSaving === false){
             if(this.maxTemp > 25){
                 this.temperature = 25;
             }
             this.maxTemp = 25;
             this.isPowerSaving = true;
+            return this.temperature;
         } 
     }
 
     reset(){
-        return this.temperature = 20;
+        this.temperature = 20;
+        return this.temperature;
     }
     colour(){
         switch(true){
@@ -46,3 +49,4 @@ export class Thermostat {
         }
     }
 }
+

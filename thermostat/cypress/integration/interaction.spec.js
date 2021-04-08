@@ -27,7 +27,54 @@ describe('thermostst interactions', function(){
             cy.get('#reset-button').click()
             cy.contains(20)
         })
-        it('power saving button turns on power saving mode', function(){
-            
+        it('power saving button turns off power saving mode', function(){
+            cy.get('#powersaving-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.contains(26)
+        })
+        it('power saving button on means that temperature remains at 25', function() {
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.contains(25)
+        })
+        it('Testing power saving button start off green', function() {
+            cy.get('#powersaving-button').should('have.css', 'background-color', 'rgb(0, 128, 0)');
+
+        })
+        it('Testing power saving button is red when clicked', function() {
+            cy.get('#powersaving-button').click()
+            cy.get('#powersaving-button').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+        })
+        it('Testing that the temperature is yellow', function() {
+            cy.get('#temperature').should('have.css', 'color', 'rgb(255, 255, 0)');
+        })
+        it('Testing that the temperature is red when at 25 degrees or above', function() { 
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#up-button').click()
+            cy.get('#temperature').click().should('have.css', 'color', 'rgb(255, 0, 0)');
+        })
+        it('Testing that the temperature is green when at less than 18', function() {
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#down-button').click()
+            cy.get('#temperature').click().should('have.css', 'color', 'rgb(0, 128, 0)')
         })
 })
